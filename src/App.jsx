@@ -108,12 +108,13 @@ function Entrance() {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         const el = section.current;
-        if (el)
+        const sticky = el?.querySelector(".entrance-sticky");
+        if (el && sticky) {
+          const scrollDistance = Math.max(1, el.offsetHeight - sticky.offsetHeight);
           setProgress(
-            clamp(
-              -el.getBoundingClientRect().top / (el.offsetHeight - innerHeight),
-            ),
+            clamp(-el.getBoundingClientRect().top / scrollDistance),
           );
+        }
       });
     };
     addEventListener("scroll", update, { passive: true });
@@ -181,7 +182,7 @@ function Entrance() {
           className="entrance-visual"
           style={{
             opacity: reduced ? 1 : sceneFade,
-            transform: reduced ? "none" : `scale(${1 + open * 0.8})`,
+            "--entrance-scale": reduced ? 1 : 1 + open * 0.8,
           }}
         >
           <div className="villa-plane">
@@ -697,16 +698,25 @@ export default function App() {
             people.
           </p>
           <div className="events">
-            {wedding.events.map((e, i) => {
-              const Icon = [Flower2, Music2, Heart][i];
+            {wedding.events.map((e) => {
+              const Icon =
+                {
+                  "henil-mandva": Flower2,
+                  haldi: Flower2,
+                  sangeet: Music2,
+                  "vidhi-mandva": Flower2,
+                  wedding: Heart,
+                }[e.id] ?? Heart;
               return (
                 <article className={`event ${e.id}`} key={e.id}>
-                  <img
-                    className="event-art"
-                    src={`/event-${e.id}.png`}
-                    alt=""
-                    loading="lazy"
-                  />
+                  {e.art && (
+                    <img
+                      className="event-art"
+                      src={e.art}
+                      alt=""
+                      loading="lazy"
+                    />
+                  )}
                   <div className="event-scrim" />
                   <div className="event-emblem">
                     <Icon strokeWidth={1} size={34} />

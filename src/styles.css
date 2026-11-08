@@ -154,6 +154,7 @@ h3 {
 .entrance-visual {
   position: absolute;
   inset: 0;
+  transform: scale(var(--entrance-scale, 1));
   transform-origin: 50% 51%;
   will-change: transform, opacity;
   pointer-events: none;
@@ -341,6 +342,39 @@ h3 {
 }
 .event.wedding {
   background: linear-gradient(145deg, #edf0e3, #dce3d1);
+}
+.event.henil-mandva {
+  background: #07364b;
+  border-color: #5790a3;
+  color: #fff3dc;
+}
+.event.vidhi-mandva {
+  background: #11192f;
+  border-color: #aa8b70;
+  color: #fff0dc;
+}
+.event.henil-mandva .event-scrim {
+  background: linear-gradient(#07364b1c 0%, #07364b26 44%, #07364bd9 100%);
+}
+.event.vidhi-mandva .event-scrim {
+  background: linear-gradient(#11192f12 0%, #11192f26 44%, #11192fe0 100%);
+}
+.event.henil-mandva .event-description,
+.event.henil-mandva .event-time,
+.event.henil-mandva .event-venue,
+.event.vidhi-mandva .event-description,
+.event.vidhi-mandva .event-time,
+.event.vidhi-mandva .event-venue {
+  color: #fff0dc;
+}
+.event.henil-mandva .event-details,
+.event.vidhi-mandva .event-details {
+  border-color: #fff0dc66;
+}
+.event.henil-mandva .event-emblem,
+.event.vidhi-mandva .event-emblem {
+  color: #fff0dc;
+  border-color: #fff0dc99;
 }
 .event-emblem {
   width: 84px;
@@ -1696,3 +1730,11 @@ footer > span {
 .venue-copy h2 br::after{content:" "}
 .venue-map{min-height:370px}
 .venue-map iframe{min-height:330px}
+
+@media (max-width: 600px) {
+  .entrance-visual {
+    transform: scale(min(var(--entrance-scale, 1), 1.15));
+    transform-origin: 50% 0%;
+    background-color: var(--cream);
+  }
+}
