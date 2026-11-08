@@ -674,9 +674,10 @@ export default function App() {
             />
             <path d="M8 54h48" stroke="currentColor" />
           </svg>
+          <span className="nav-hashtag">#Henilkividhi</span>
         </a>
         <a href="#wedding">The wedding</a>
-        <a href="#venue">The venue</a>
+        <a className="nav-venue" href="#venue">The venue</a>
         <a className="nav-rsvp" href="#rsvp">
           RSVP
         </a>
@@ -772,6 +773,7 @@ export default function App() {
           Henil <i>&</i> Vidhi
         </h2>
         <p className="footer-date">{wedding.dates} · Vadodara</p>
+        <p className="footer-hashtag">#Henilkividhi</p>
         <span>WITH LOVE, ALWAYS.</span>
       </footer>
       <MusicPlayer />
