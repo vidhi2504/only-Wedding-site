@@ -1,6 +1,6 @@
 # Henil & Vidhi — wedding invitation
 
-A local React + Vite project. Nothing has been deployed. The frontend is portable and includes the garden-villa entrance, a vintage car with gentle head movement, scroll-controlled opening doors, sky-blue Haldi styling, event details, directions, a four-photo lightbox gallery, music, and RSVP.
+A local React + Vite project. Nothing has been deployed. The frontend is portable and includes the garden-villa entrance, a vintage car with gentle head movement, scroll-controlled opening doors, wedding ceremony details, directions, a four-photo lightbox gallery, music, and RSVP.
 
 ## Start locally
 
@@ -15,7 +15,7 @@ Open the local URL printed by Vite, normally `http://127.0.0.1:5173`. This comma
 
 ## Edit details
 
-- `src/config.js`: names, dates, venue, directions, event times and music video.
+- `src/config.js`: names, wedding date, venue, directions, ceremony time and music.
 - `src/App.jsx`: page sections, entrance animation, music, gallery and RSVP.
 - `src/styles.css`: responsive styles and animation timing.
 - `public/`: illustrations and four supplied photographs.
@@ -24,7 +24,7 @@ The venue image is a decorative villa illustration, not a photograph of Waves Cl
 
 ## RSVP
 
-The RSVP asks for an attendee name, yes/no attendance, and an optional wish (up to 1,000 characters). Locally, responses are saved by the included Node API to `data/rsvps.sqlite`, using Node's built-in SQLite module. On Vercel, `api/rsvp.js` saves responses to Supabase using a server-only service-role key. Responses are not exposed by a public read endpoint. Editing a response within the same page session updates its record. New sessions are separate submissions; names are not treated as unique identities. Request IDs prevent a retry from duplicating a response.
+The RSVP asks for an attendee name, whether they will attend the wedding, and an optional wish (up to 1,000 characters). Locally, responses are saved by the included Node API to `data/rsvps.sqlite`, using Node's built-in SQLite module. On Vercel, `api/rsvp.js` saves responses to Supabase using a server-only service-role key. Responses are not exposed by a public read endpoint. Editing a response within the same page session updates its record. New sessions are separate submissions; names are not treated as unique identities. Request IDs prevent a retry from duplicating a response.
 
 Export responses locally:
 
@@ -40,7 +40,7 @@ For local development, keep the SQLite database private and back it up. `data/` 
 2. Run [`supabase/schema.sql`](./supabase/schema.sql) to create or update the private RSVP table, including its wishes column. Row-level security is enabled, and public `anon`/`authenticated` roles have no table access.
 3. In the Supabase project settings, copy the **Project URL** and **service_role** API key. In Vercel, add them as `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` environment variables for Production (and Preview if desired). Never use the service-role key in frontend code or commit it.
 4. Redeploy the Vercel project. The form posts to the same-origin `/api/rsvp` function, which upserts the RSVP without exposing a read endpoint.
-5. To view or export replies, use the Supabase Table Editor for `public.rsvps` and its CSV export. Keep access to the Supabase dashboard restricted to the hosts.
+5. To view or export replies, use the Supabase Table Editor for `public.wedding_rsvps` and its CSV export. Keep access to the Supabase dashboard restricted to the hosts.
 
 Local `npm run dev` continues to use SQLite. To test the live Supabase integration, submit a test response on a Vercel Preview deployment and then remove it from the Supabase Table Editor.
 
@@ -71,7 +71,7 @@ These media files are not supplied yet. Until present, the chapter uses the vill
 
 Vidhi’s likeness in the car, portrait, and six-pose dance sheet has been updated using the supplied magenta-outfit reference photo. The dance is now a bundled MP4 with separate illustrated poses, playing automatically after the doors open.
 
-The function cards use custom Haldi, Sangeet, and wedding background artwork. The venue includes an embedded map centred on the destination resolved from your supplied Google Maps link, plus the original directions link.
+The wedding invitation includes its ceremony artwork and an embedded venue map centred on the destination resolved from your supplied Google Maps link, plus the original directions link.
 
 ## Accessibility and motion
 

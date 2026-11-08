@@ -3,12 +3,10 @@ import {
   ArrowDown,
   ArrowUpRight,
   MapPin,
-  Music2,
   Pause,
   Play,
   X,
   Check,
-  Flower2,
   Sparkles,
   Heart,
 } from "lucide-react";
@@ -161,11 +159,12 @@ function Entrance() {
           </h2>
           <p>
             With love in our hearts and our favourite people beside us,
-            <br className="desktop-break" /> we’re beginning our forever.
+            <br className="desktop-break" /> we’re beginning our forever on
+            our wedding day.
           </p>
           <p className="italic">We would love for you to be there.</p>
-          <a href="#celebrations" className="text-link">
-            Discover the celebrations <ArrowDown size={16} />
+          <a href="#wedding" className="text-link">
+            Discover our wedding <ArrowDown size={16} />
           </a>
         </div>
         <div
@@ -259,7 +258,7 @@ function Entrance() {
             Henil Shah <em>&</em> Vidhi Mehta
           </h1>
           <p className="date">{wedding.dates}</p>
-          <p className="hero-note">A little invitation to our biggest day.</p>
+          <p className="hero-note">A little invitation to our wedding day.</p>
         </div>
         <div
           className={`car-position ${ready ? "ready" : ""}`}
@@ -275,7 +274,7 @@ function Entrance() {
           alt=""
           onLoad={() => setReady(true)}
         />
-        <a href="#celebrations" className="skip-intro">
+        <a href="#wedding" className="skip-intro">
           Skip to invitation
         </a>
         <div
@@ -388,7 +387,7 @@ function RSVP() {
           Celebrate <br />
           <i>with us.</i>
         </h2>
-        <p>Your presence will make our celebration complete.</p>
+        <p>Your presence will make our wedding day complete.</p>
         {status === "success" ? (
           <div className="rsvp-success" role="status">
             <div className="rsvp-mail-flight" aria-hidden="true">
@@ -485,13 +484,13 @@ function RSVP() {
               onChange={(e) => setName(e.target.value)}
             />
             <fieldset>
-              <legend>Will you attend?</legend>
+              <legend>Will you join us for our wedding?</legend>
               <RadioGroup
                 value={attendance}
                 onValueChange={setAttendance}
                 className="attendance-options"
                 required
-                aria-label="Will you attend?"
+                aria-label="Will you join us for our wedding?"
               >
                 <label>
                   <RadioGroupItem className="radio-item" value="yes" />
@@ -539,7 +538,7 @@ function Countdown() {
   }, []);
   const remaining = Math.max(
     0,
-    Math.floor((new Date("2027-02-01T00:00:00+05:30").getTime() - now) / 1000),
+    Math.floor((new Date("2027-02-02T00:00:00+05:30").getTime() - now) / 1000),
   );
   const values = [
     Math.floor(remaining / 86400),
@@ -550,11 +549,11 @@ function Countdown() {
   return (
     <section
       className="countdown section"
-      aria-label="Countdown to our celebration"
+      aria-label="Countdown to our wedding"
     >
       <p className="eyebrow">COUNTING EVERY MOMENT</p>
       <h2>
-        {remaining ? "Until our forever begins." : "Our celebration is here."}
+        {remaining ? "Until our wedding day." : "Our wedding day is here."}
       </h2>
       <div className="countdown-grid">
         {values.map((value, i) => (
@@ -564,7 +563,7 @@ function Countdown() {
           </div>
         ))}
       </div>
-      <p>Our celebrations begin 1st February 2027</p>
+      <p>2nd February 2027 · Waves Club Resort, Vadodara</p>
     </section>
   );
 }
@@ -676,7 +675,7 @@ export default function App() {
             <path d="M8 54h48" stroke="currentColor" />
           </svg>
         </a>
-        <a href="#celebrations">The celebrations</a>
+        <a href="#wedding">The wedding</a>
         <a href="#venue">The venue</a>
         <a className="nav-rsvp" href="#rsvp">
           RSVP
@@ -686,27 +685,19 @@ export default function App() {
         <Entrance />
         <Countdown />
         <OurStory />
-        <section id="celebrations" className="section celebrations">
-          <p className="eyebrow">A CELEBRATION OF LOVE</p>
+        <section id="wedding" className="section wedding-section">
+          <p className="eyebrow">OUR WEDDING DAY</p>
           <h2>
-            Two days.
+            One day.
             <br />
-            <i>A lifetime of memories.</i>
+            <i>Our forever begins.</i>
           </h2>
           <p className="section-intro">
-            A little laughter, a little dancing, and all of our favourite
-            people.
+            We would be honoured to have you with us as we begin our life
+            together.
           </p>
           <div className="events">
             {wedding.events.map((e) => {
-              const Icon =
-                {
-                  "henil-mandva": Flower2,
-                  haldi: Flower2,
-                  sangeet: Music2,
-                  "vidhi-mandva": Flower2,
-                  wedding: Heart,
-                }[e.id] ?? Heart;
               return (
                 <article className={`event ${e.id}`} key={e.id}>
                   {e.art && (
@@ -719,7 +710,7 @@ export default function App() {
                   )}
                   <div className="event-scrim" />
                   <div className="event-emblem">
-                    <Icon strokeWidth={1} size={34} />
+                    <Heart strokeWidth={1} size={34} />
                   </div>
                   <p className="event-kicker">
                     {e.number} · {e.label}
@@ -744,9 +735,9 @@ export default function App() {
             <h2>Waves Club Resort</h2>
             <p className="venue-city">Vadodara</p>
             <p>
-              Two beautiful days.
+              Join us for our wedding day.
               <br />
-              One place to make memories together.
+              We can’t wait to celebrate with you.
             </p>
             <a
               className="button"

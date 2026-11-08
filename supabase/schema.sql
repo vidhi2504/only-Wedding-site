@@ -1,4 +1,4 @@
-create table if not exists public.allfunc_rsvps (
+create table if not exists public.wedding_rsvps (
   id uuid primary key,
   name text not null check (char_length(btrim(name)) between 1 and 100),
   attending boolean not null,
@@ -6,11 +6,11 @@ create table if not exists public.allfunc_rsvps (
   updated_at timestamptz not null default now()
 );
 
-alter table public.allfunc_rsvps
+alter table public.wedding_rsvps
   add column if not exists wishes text not null default ''
   check (char_length(wishes) <= 1000);
 
-alter table public.allfunc_rsvps enable row level security;
+alter table public.wedding_rsvps enable row level security;
 
-revoke all on table public.allfunc_rsvps from public, anon, authenticated;
-grant all on table public.allfunc_rsvps to service_role;
+revoke all on table public.wedding_rsvps from public, anon, authenticated;
+grant all on table public.wedding_rsvps to service_role;

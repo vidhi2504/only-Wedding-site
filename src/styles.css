@@ -317,10 +317,10 @@ h3 {
   margin-bottom: 0;
 }
 .events {
-  max-width: 1320px;
+  max-width: 470px;
   margin: 55px auto 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 25px;
 }
 .event {
@@ -332,49 +332,8 @@ h3 {
   border-radius: 160px 160px 6px 6px;
   overflow: hidden;
 }
-.event.haldi {
-  background: linear-gradient(145deg, #e6f4fc, #c5e2f2);
-  border-color: #a8cadf;
-  color: #2c526c;
-}
-.event.sangeet {
-  background: linear-gradient(145deg, #f0e6df, #e8d7cd);
-}
 .event.wedding {
   background: linear-gradient(145deg, #edf0e3, #dce3d1);
-}
-.event.henil-mandva {
-  background: #07364b;
-  border-color: #5790a3;
-  color: #fff3dc;
-}
-.event.vidhi-mandva {
-  background: #11192f;
-  border-color: #aa8b70;
-  color: #fff0dc;
-}
-.event.henil-mandva .event-scrim {
-  background: linear-gradient(#07364b1c 0%, #07364b26 44%, #07364bd9 100%);
-}
-.event.vidhi-mandva .event-scrim {
-  background: linear-gradient(#11192f12 0%, #11192f26 44%, #11192fe0 100%);
-}
-.event.henil-mandva .event-description,
-.event.henil-mandva .event-time,
-.event.henil-mandva .event-venue,
-.event.vidhi-mandva .event-description,
-.event.vidhi-mandva .event-time,
-.event.vidhi-mandva .event-venue {
-  color: #fff0dc;
-}
-.event.henil-mandva .event-details,
-.event.vidhi-mandva .event-details {
-  border-color: #fff0dc66;
-}
-.event.henil-mandva .event-emblem,
-.event.vidhi-mandva .event-emblem {
-  color: #fff0dc;
-  border-color: #fff0dc99;
 }
 .event-emblem {
   width: 84px;
@@ -385,10 +344,6 @@ h3 {
   place-items: center;
   margin: 0 auto 28px;
   color: #817356;
-}
-.haldi .event-emblem {
-  color: #4e86a7;
-  border-color: #97bed5;
 }
 .wedding .event-emblem {
   color: #6a7858;
@@ -411,9 +366,6 @@ h3 {
   margin: 0 auto 30px;
   color: #656653;
 }
-.haldi .event-description {
-  color: #486a7c;
-}
 .event-details {
   border-top: 1px solid #8f967e42;
   padding-top: 23px;
@@ -428,9 +380,6 @@ h3 {
   font-size: 14px;
   color: #5d6657;
   margin: 0 0 15px;
-}
-.haldi .event-time {
-  color: #4d6e82;
 }
 .event strong {
   font-weight: 500;
@@ -1484,27 +1433,6 @@ footer > span {
     #f8f1e5eb 49%,
     #f8f1e5f5 100%
   );
-}
-.event.haldi .event-scrim {
-  background: linear-gradient(#d9eff970, #d5ecf4cc 38%, #d5ecf4f5 74%);
-}
-.event.sangeet .event-scrim {
-  background: linear-gradient(#39273940, #392739c4 45%, #392739f5 90%);
-}
-.event.sangeet {
-  color: #ffefdc;
-}
-.event.sangeet .event-description,
-.event.sangeet .event-time,
-.event.sangeet .event-venue {
-  color: #eee0d2;
-}
-.event.sangeet .event-emblem {
-  color: #ffebcc;
-  border-color: #ffefdc80;
-}
-.event.sangeet .event-details {
-  border-color: #ffefdc40;
 }
 .event > *:not(.event-art):not(.event-scrim) {
   position: relative;

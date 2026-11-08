@@ -50,10 +50,19 @@ test("Vercel RSVP endpoint upserts a validated response to Supabase", async () =
 
     assert.equal(res.statusCode, 200);
     assert.deepEqual(res.body, { saved: true });
-    assert.equal(request[0], "https://project.supabase.co/rest/v1/allfunc_rsvps?on_conflict=id");
+    assert.equal(
+      request[0],
+      "https://project.supabase.co/rest/v1/wedding_rsvps?on_conflict=id",
+    );
     assert.equal(request[1].headers.apikey, "server-only-test-key");
-    assert.equal(request[1].headers.Authorization, "Bearer server-only-test-key");
-    assert.equal(request[1].headers.Prefer, "resolution=merge-duplicates,return=minimal");
+    assert.equal(
+      request[1].headers.Authorization,
+      "Bearer server-only-test-key",
+    );
+    assert.equal(
+      request[1].headers.Prefer,
+      "resolution=merge-duplicates,return=minimal",
+    );
     const saved = JSON.parse(request[1].body);
     assert.equal(saved.name, "Wedding Guest");
     assert.equal(saved.attending, true);
@@ -70,7 +79,10 @@ test("Vercel RSVP endpoint upserts a validated response to Supabase", async () =
 
 test("Vercel RSVP endpoint rejects invalid and cross-origin submissions", async () => {
   const invalidRes = createResponse();
-  await handler(createRequest({ body: { name: "", attendance: "yes" } }), invalidRes);
+  await handler(
+    createRequest({ body: { name: "", attendance: "yes" } }),
+    invalidRes,
+  );
   assert.equal(invalidRes.statusCode, 400);
 
   const longWishesRes = createResponse();

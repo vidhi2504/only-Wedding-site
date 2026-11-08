@@ -66,7 +66,7 @@ export default async function handler(req, res) {
 
   try {
     const response = await fetch(
-      `${supabaseUrl}/rest/v1/allfunc_rsvps?on_conflict=id`,
+      `${supabaseUrl}/rest/v1/wedding_rsvps?on_conflict=id`,
       {
         method: "POST",
         headers: {
@@ -79,7 +79,9 @@ export default async function handler(req, res) {
       },
     );
     if (!response.ok) {
-      console.error(`Supabase RSVP request failed with status ${response.status}.`);
+      console.error(
+        `Supabase RSVP request failed with status ${response.status}.`,
+      );
       return json(res, 503, {
         error: "We could not save your response. Please try again shortly.",
       });
